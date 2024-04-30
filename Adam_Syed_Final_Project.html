@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adam Syed">
+
+<title>Adam_Syed_Final_Project</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Adam_Syed_Final_Project_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Adam_Syed_Final_Project_files/libs/quarto-html/quarto.js"></script>
+<script src="Adam_Syed_Final_Project_files/libs/quarto-html/popper.min.js"></script>
+<script src="Adam_Syed_Final_Project_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Adam_Syed_Final_Project_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Adam_Syed_Final_Project_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Adam_Syed_Final_Project_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Adam_Syed_Final_Project_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Adam_Syed_Final_Project_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Adam_Syed_Final_Project_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Adam_Syed_Final_Project</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adam Syed </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="github-repository">Github Repository</h2>
+<p><a href="https://github.com/adamsyed33/AdamSyed_FinalProject" class="uri">https://github.com/adamsyed33/AdamSyed_FinalProject</a></p>
+<p>This is the link to my github repository. This is one of my five add ons.</p>
+</section>
+<section id="goal" class="level2">
+<h2 class="anchored" data-anchor-id="goal">Goal</h2>
+<p>The goal of this project is to create a model to predict whether ‘team1’ will win each game at the 2022 world cup or not.</p>
+</section>
+<section id="data-import" class="level2">
+<h2 class="anchored" data-anchor-id="data-import">Data Import</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidymodels' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.2.0 ──
+✔ broom        1.0.5      ✔ rsample      1.2.1 
+✔ dials        1.2.1      ✔ tune         1.2.1 
+✔ infer        1.0.7      ✔ workflows    1.1.4 
+✔ modeldata    1.3.0      ✔ workflowsets 1.1.0 
+✔ parsnip      1.2.1      ✔ yardstick    1.3.1 
+✔ recipes      1.0.10     </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dials' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'infer' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'parsnip' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'recipes' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'rsample' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tune' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'workflows' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'workflowsets' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'yardstick' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
+✖ scales::discard() masks purrr::discard()
+✖ dplyr::filter()   masks stats::filter()
+✖ recipes::fixed()  masks stringr::fixed()
+✖ dplyr::lag()      masks stats::lag()
+✖ yardstick::spec() masks readr::spec()
+✖ recipes::step()   masks stats::step()
+• Learn how to get started at https://www.tidymodels.org/start/</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>worldcup_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"/Users/adamyeeter/STAT 5125/Final Project/Adam_Syed_Final_Project/Fifa_world_cup_matches.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 64 Columns: 88
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (8): team1, team2, possession team1, possession team2, possession in co...
+dbl (80): number of goals team1, number of goals team2, total attempts team1...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+</section>
+<section id="data-cleaning-and-tidying" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning-and-tidying">Data Cleaning and Tidying</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(worldcup_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>Checked for NA’s, none found.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>worldcup_data <span class="ot">&lt;-</span> worldcup_data <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"possession"</span>), <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"%"</span>, <span class="st">""</span>, .x)) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Converted possession to a numeric column, removed percent sign, and divided by 100. This satisfies the add on, “Clean data using a regular expression”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>worldcup_data <span class="ot">&lt;-</span> worldcup_data <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">first_team_wins =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">number of goals team1</span><span class="st">`</span> <span class="sc">&gt;</span> <span class="st">`</span><span class="at">number of goals team2</span><span class="st">`</span> <span class="sc">~</span> <span class="st">"TRUE"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"FALSE"</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">first_team_wins =</span> <span class="fu">factor</span>(first_team_wins))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Set up target variable as ‘first_team_wins’. This target variable returns “TRUE” when team1 wins and “FALSE” when team1 does not win.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>worldcup_data <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 64
+Columns: 89
+$ team1                                                   &lt;chr&gt; "QATAR", "ENGL…
+$ team2                                                   &lt;chr&gt; "ECUADOR", "IR…
+$ `possession team1`                                      &lt;dbl&gt; 0.42, 0.72, 0.…
+$ `possession team2`                                      &lt;dbl&gt; 0.50, 0.19, 0.…
+$ `possession in contest`                                 &lt;dbl&gt; 0.08, 0.09, 0.…
+$ `number of goals team1`                                 &lt;dbl&gt; 0, 6, 0, 1, 1,…
+$ `number of goals team2`                                 &lt;dbl&gt; 2, 2, 2, 1, 2,…
+$ date                                                    &lt;chr&gt; "20 NOV 2022",…
+$ hour                                                    &lt;chr&gt; "17 : 00", "14…
+$ category                                                &lt;chr&gt; "Group A", "Gr…
+$ `total attempts team1`                                  &lt;dbl&gt; 5, 13, 14, 6, …
+$ `total attempts team2`                                  &lt;dbl&gt; 6, 8, 9, 7, 3,…
+$ `conceded team1`                                        &lt;dbl&gt; 2, 2, 2, 1, 2,…
+$ `conceded team2`                                        &lt;dbl&gt; 0, 6, 0, 1, 1,…
+$ `goal inside the penalty area team1`                    &lt;dbl&gt; 0, 6, 0, 1, 1,…
+$ `goal inside the penalty area team2`                    &lt;dbl&gt; 2, 2, 2, 1, 2,…
+$ `goal outside the penalty area team1`                   &lt;dbl&gt; 0, 0, 0, 0, 0,…
+$ `goal outside the penalty area team2`                   &lt;dbl&gt; 0, 0, 0, 0, 0,…
+$ `assists team1`                                         &lt;dbl&gt; 0, 6, 0, 1, 0,…
+$ `assists team2`                                         &lt;dbl&gt; 1, 1, 1, 0, 1,…
+$ `on target attempts team1`                              &lt;dbl&gt; 0, 7, 3, 1, 6,…
+$ `on target attempts team2`                              &lt;dbl&gt; 3, 3, 3, 3, 2,…
+$ `off target attempts team1`                             &lt;dbl&gt; 5, 3, 8, 4, 5,…
+$ `off target attempts team2`                             &lt;dbl&gt; 3, 4, 5, 3, 0,…
+$ `attempts inside the penalty area team1`                &lt;dbl&gt; 2, 10, 7, 4, 1…
+$ `attempts inside the penalty area  team2`               &lt;dbl&gt; 4, 6, 5, 5, 3,…
+$ `attempts outside the penalty area  team1`              &lt;dbl&gt; 3, 3, 7, 2, 4,…
+$ `attempts outside the penalty area  team2`              &lt;dbl&gt; 2, 2, 4, 2, 0,…
+$ `left channel team1`                                    &lt;dbl&gt; 15, 11, 12, 14…
+$ `left channel team2`                                    &lt;dbl&gt; 8, 3, 11, 7, 3…
+$ `left inside channel team1`                             &lt;dbl&gt; 0, 5, 4, 5, 4,…
+$ `left inside channel team2`                             &lt;dbl&gt; 7, 0, 2, 2, 2,…
+$ `central channel team1`                                 &lt;dbl&gt; 3, 2, 2, 4, 5,…
+$ `central channel team2`                                 &lt;dbl&gt; 6, 3, 2, 5, 3,…
+$ `right inside channel team1`                            &lt;dbl&gt; 1, 3, 4, 4, 8,…
+$ `right inside channel team2`                            &lt;dbl&gt; 4, 1, 7, 2, 3,…
+$ `right channel team1`                                   &lt;dbl&gt; 9, 11, 13, 11,…
+$ `right channel team2`                                   &lt;dbl&gt; 6, 0, 20, 7, 8…
+$ `total offers to receive team1`                         &lt;dbl&gt; 520, 1061, 502…
+$ `total offers to receive team2`                         &lt;dbl&gt; 532, 212, 506,…
+$ `inbehind offers to receive team1`                      &lt;dbl&gt; 116, 207, 123,…
+$ `inbehind offers to receive team2`                      &lt;dbl&gt; 127, 53, 117, …
+$ `inbetween offers to receive team1`                     &lt;dbl&gt; 235, 386, 230,…
+$ `inbetween offers to receive team2`                     &lt;dbl&gt; 187, 86, 191, …
+$ `infront offers to receive team1`                       &lt;dbl&gt; 169, 468, 149,…
+$ `infront offers to receive team2`                       &lt;dbl&gt; 218, 73, 198, …
+$ `receptions between midfield and defensive lines team1` &lt;dbl&gt; 5, 16, 15, 12,…
+$ `receptions between midfield and defensive lines team2` &lt;dbl&gt; 8, 4, 14, 9, 9…
+$ `attempted line breaks team1`                           &lt;dbl&gt; 136, 238, 151,…
+$ `attempted line breaks team2`                           &lt;dbl&gt; 155, 101, 162,…
+$ `completed line breaksteam1`                            &lt;dbl&gt; 86, 178, 89, 1…
+$ `completed line breaks team2`                           &lt;dbl&gt; 99, 45, 96, 10…
+$ `attempted defensive line breaks team1`                 &lt;dbl&gt; 9, 25, 22, 23,…
+$ `attempted defensive line breaks team2`                 &lt;dbl&gt; 13, 7, 22, 17,…
+$ `completed defensive line breaksteam1`                  &lt;dbl&gt; 4, 16, 15, 15,…
+$ `completed defensive line breaks team2`                 &lt;dbl&gt; 7, 4, 10, 8, 7…
+$ `yellow cards team1`                                    &lt;dbl&gt; 4, 0, 2, 4, 0,…
+$ `yellow cards team2`                                    &lt;dbl&gt; 2, 2, 1, 2, 6,…
+$ `red cards team1`                                       &lt;dbl&gt; 0, 0, 0, 0, 0,…
+$ `red cards team2`                                       &lt;dbl&gt; 0, 0, 0, 0, 0,…
+$ `fouls against team1`                                   &lt;dbl&gt; 15, 9, 13, 15,…
+$ `fouls against team2`                                   &lt;dbl&gt; 15, 14, 13, 10…
+$ `offsides team1`                                        &lt;dbl&gt; 3, 2, 2, 1, 10…
+$ `offsides team2`                                        &lt;dbl&gt; 4, 2, 1, 1, 1,…
+$ `passes team1`                                          &lt;dbl&gt; 450, 809, 383,…
+$ `passes team2`                                          &lt;dbl&gt; 480, 224, 438,…
+$ `passes completed team1`                                &lt;dbl&gt; 381, 730, 313,…
+$ `passes completed team2`                                &lt;dbl&gt; 409, 154, 374,…
+$ `crosses team1`                                         &lt;dbl&gt; 9, 23, 19, 31,…
+$ `crosses team2`                                         &lt;dbl&gt; 14, 8, 25, 15,…
+$ `crosses completed team1`                               &lt;dbl&gt; 4, 7, 7, 4, 12…
+$ `crosses completed team2`                               &lt;dbl&gt; 4, 1, 8, 6, 2,…
+$ `switches of play completed team1`                      &lt;dbl&gt; 9, 12, 9, 5, 5…
+$ `switches of play completed team2`                      &lt;dbl&gt; 9, 3, 6, 8, 7,…
+$ `corners team1`                                         &lt;dbl&gt; 1, 8, 6, 5, 9,…
+$ `corners team2`                                         &lt;dbl&gt; 3, 0, 7, 3, 2,…
+$ `free kicks team1`                                      &lt;dbl&gt; 19, 16, 14, 11…
+$ `free kicks team2`                                      &lt;dbl&gt; 17, 10, 14, 15…
+$ `penalties scored team1`                                &lt;dbl&gt; 0, 0, 0, 0, 1,…
+$ `penalties scored team2`                                &lt;dbl&gt; 1, 1, 0, 1, 0,…
+$ `goal preventions team1`                                &lt;dbl&gt; 6, 8, 9, 7, 4,…
+$ `goal preventions team2`                                &lt;dbl&gt; 5, 13, 15, 7, …
+$ `own goals team1`                                       &lt;dbl&gt; 0, 0, 0, 0, 0,…
+$ `own goals team2`                                       &lt;dbl&gt; 0, 0, 0, 0, 0,…
+$ `forced turnovers team1`                                &lt;dbl&gt; 52, 63, 63, 81…
+$ `forced turnovers team2`                                &lt;dbl&gt; 72, 72, 73, 72…
+$ `defensive pressures applied team1`                     &lt;dbl&gt; 256, 139, 263,…
+$ `defensive pressures applied team2`                     &lt;dbl&gt; 279, 416, 251,…
+$ first_team_wins                                         &lt;fct&gt; FALSE, TRUE, F…</code></pre>
+</div>
+</div>
+<p>Viewing column names to decide which ones I want to remove/keep.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>worldcup_data <span class="ot">&lt;-</span> worldcup_data <span class="sc">|&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">number of goals team1</span><span class="st">`</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">number of goals team2</span><span class="st">`</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">goal inside the penalty area team1</span><span class="st">`</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">goal inside the penalty area team2</span><span class="st">`</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">goal outside the penalty area team1</span><span class="st">`</span>,</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">goal outside the penalty area team2</span><span class="st">`</span>,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">conceded team1</span><span class="st">`</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">conceded team2</span><span class="st">`</span>,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">on target attempts team1</span><span class="st">`</span>,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">on target attempts team2</span><span class="st">`</span>,</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">attempts inside the penalty area team1</span><span class="st">`</span>,</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">attempts inside the penalty area  team2</span><span class="st">`</span>,</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">off target attempts team1</span><span class="st">`</span>,</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="st">`</span><span class="at">off target attempts team2</span><span class="st">`</span>,</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>team1,</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>team2,</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>date,</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>hour,</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>category</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Removed number of goals for both teams because that would make the problem too easy. I also removed goals inside and outside the penalty area for both teams for the same reason. I removed conceded for both teams for the same reason as well. I removed all attempts columns except for total attempts because all of those columns correlate highly with total attempts. I removed team1, team2, date, hour, and category because they do not have predicitve power for my target variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>worldcup_data <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 64
+Columns: 70
+$ `possession team1`                                      &lt;dbl&gt; 0.42, 0.72, 0.…
+$ `possession team2`                                      &lt;dbl&gt; 0.50, 0.19, 0.…
+$ `possession in contest`                                 &lt;dbl&gt; 0.08, 0.09, 0.…
+$ `total attempts team1`                                  &lt;dbl&gt; 5, 13, 14, 6, …
+$ `total attempts team2`                                  &lt;dbl&gt; 6, 8, 9, 7, 3,…
+$ `assists team1`                                         &lt;dbl&gt; 0, 6, 0, 1, 0,…
+$ `assists team2`                                         &lt;dbl&gt; 1, 1, 1, 0, 1,…
+$ `attempts outside the penalty area  team1`              &lt;dbl&gt; 3, 3, 7, 2, 4,…
+$ `attempts outside the penalty area  team2`              &lt;dbl&gt; 2, 2, 4, 2, 0,…
+$ `left channel team1`                                    &lt;dbl&gt; 15, 11, 12, 14…
+$ `left channel team2`                                    &lt;dbl&gt; 8, 3, 11, 7, 3…
+$ `left inside channel team1`                             &lt;dbl&gt; 0, 5, 4, 5, 4,…
+$ `left inside channel team2`                             &lt;dbl&gt; 7, 0, 2, 2, 2,…
+$ `central channel team1`                                 &lt;dbl&gt; 3, 2, 2, 4, 5,…
+$ `central channel team2`                                 &lt;dbl&gt; 6, 3, 2, 5, 3,…
+$ `right inside channel team1`                            &lt;dbl&gt; 1, 3, 4, 4, 8,…
+$ `right inside channel team2`                            &lt;dbl&gt; 4, 1, 7, 2, 3,…
+$ `right channel team1`                                   &lt;dbl&gt; 9, 11, 13, 11,…
+$ `right channel team2`                                   &lt;dbl&gt; 6, 0, 20, 7, 8…
+$ `total offers to receive team1`                         &lt;dbl&gt; 520, 1061, 502…
+$ `total offers to receive team2`                         &lt;dbl&gt; 532, 212, 506,…
+$ `inbehind offers to receive team1`                      &lt;dbl&gt; 116, 207, 123,…
+$ `inbehind offers to receive team2`                      &lt;dbl&gt; 127, 53, 117, …
+$ `inbetween offers to receive team1`                     &lt;dbl&gt; 235, 386, 230,…
+$ `inbetween offers to receive team2`                     &lt;dbl&gt; 187, 86, 191, …
+$ `infront offers to receive team1`                       &lt;dbl&gt; 169, 468, 149,…
+$ `infront offers to receive team2`                       &lt;dbl&gt; 218, 73, 198, …
+$ `receptions between midfield and defensive lines team1` &lt;dbl&gt; 5, 16, 15, 12,…
+$ `receptions between midfield and defensive lines team2` &lt;dbl&gt; 8, 4, 14, 9, 9…
+$ `attempted line breaks team1`                           &lt;dbl&gt; 136, 238, 151,…
+$ `attempted line breaks team2`                           &lt;dbl&gt; 155, 101, 162,…
+$ `completed line breaksteam1`                            &lt;dbl&gt; 86, 178, 89, 1…
+$ `completed line breaks team2`                           &lt;dbl&gt; 99, 45, 96, 10…
+$ `attempted defensive line breaks team1`                 &lt;dbl&gt; 9, 25, 22, 23,…
+$ `attempted defensive line breaks team2`                 &lt;dbl&gt; 13, 7, 22, 17,…
+$ `completed defensive line breaksteam1`                  &lt;dbl&gt; 4, 16, 15, 15,…
+$ `completed defensive line breaks team2`                 &lt;dbl&gt; 7, 4, 10, 8, 7…
+$ `yellow cards team1`                                    &lt;dbl&gt; 4, 0, 2, 4, 0,…
+$ `yellow cards team2`                                    &lt;dbl&gt; 2, 2, 1, 2, 6,…
+$ `red cards team1`                                       &lt;dbl&gt; 0, 0, 0, 0, 0,…
+$ `red cards team2`                                       &lt;dbl&gt; 0, 0, 0, 0, 0,…
+$ `fouls against team1`                                   &lt;dbl&gt; 15, 9, 13, 15,…
+$ `fouls against team2`                                   &lt;dbl&gt; 15, 14, 13, 10…
+$ `offsides team1`                                        &lt;dbl&gt; 3, 2, 2, 1, 10…
+$ `offsides team2`                                        &lt;dbl&gt; 4, 2, 1, 1, 1,…
+$ `passes team1`                                          &lt;dbl&gt; 450, 809, 383,…
+$ `passes team2`                                          &lt;dbl&gt; 480, 224, 438,…
+$ `passes completed team1`                                &lt;dbl&gt; 381, 730, 313,…
+$ `passes completed team2`                                &lt;dbl&gt; 409, 154, 374,…
+$ `crosses team1`                                         &lt;dbl&gt; 9, 23, 19, 31,…
+$ `crosses team2`                                         &lt;dbl&gt; 14, 8, 25, 15,…
+$ `crosses completed team1`                               &lt;dbl&gt; 4, 7, 7, 4, 12…
+$ `crosses completed team2`                               &lt;dbl&gt; 4, 1, 8, 6, 2,…
+$ `switches of play completed team1`                      &lt;dbl&gt; 9, 12, 9, 5, 5…
+$ `switches of play completed team2`                      &lt;dbl&gt; 9, 3, 6, 8, 7,…
+$ `corners team1`                                         &lt;dbl&gt; 1, 8, 6, 5, 9,…
+$ `corners team2`                                         &lt;dbl&gt; 3, 0, 7, 3, 2,…
+$ `free kicks team1`                                      &lt;dbl&gt; 19, 16, 14, 11…
+$ `free kicks team2`                                      &lt;dbl&gt; 17, 10, 14, 15…
+$ `penalties scored team1`                                &lt;dbl&gt; 0, 0, 0, 0, 1,…
+$ `penalties scored team2`                                &lt;dbl&gt; 1, 1, 0, 1, 0,…
+$ `goal preventions team1`                                &lt;dbl&gt; 6, 8, 9, 7, 4,…
+$ `goal preventions team2`                                &lt;dbl&gt; 5, 13, 15, 7, …
+$ `own goals team1`                                       &lt;dbl&gt; 0, 0, 0, 0, 0,…
+$ `own goals team2`                                       &lt;dbl&gt; 0, 0, 0, 0, 0,…
+$ `forced turnovers team1`                                &lt;dbl&gt; 52, 63, 63, 81…
+$ `forced turnovers team2`                                &lt;dbl&gt; 72, 72, 73, 72…
+$ `defensive pressures applied team1`                     &lt;dbl&gt; 256, 139, 263,…
+$ `defensive pressures applied team2`                     &lt;dbl&gt; 279, 416, 251,…
+$ first_team_wins                                         &lt;fct&gt; FALSE, TRUE, F…</code></pre>
+</div>
+</div>
+<p>Viewing all columns included in modeling.</p>
+</section>
+<section id="data-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="data-exploration">Data Exploration</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(worldcup_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">total attempts team1</span><span class="st">`</span>, <span class="at">fill =</span> first_team_wins)) <span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Total Attempts by Team 1"</span>, <span class="at">x =</span> <span class="st">"Total Attempts"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Adam_Syed_Final_Project_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This histogram shows how often the first team won or did not win when having a certain number of attempts. There is a large amount of data for the 0 to 15 attempt range and not much past that. This indicates that it is less common to have a lot of attempts in a match. As you can see from the histogram, a large number of attempts does not always correlate with winning the match. Also, a low number or attempts does not always correlate with not winning the match. Total attempts is not a great predictor because I do not see a strong correlation between a higher number of attempts and more wins or non-wins.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(worldcup_data, <span class="fu">aes</span>(<span class="at">x =</span> first_team_wins)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>)) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Wins and Non-wins by Team 1"</span>,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Team 1 Wins"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Adam_Syed_Final_Project_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This bar plot shows the number of games Team 1 won and the number they did not win. Based on the plot, Team 1 lost 35 times and won 29 times.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(worldcup_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">possession team1</span><span class="st">`</span>, <span class="at">fill =</span> first_team_wins)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Density of Ball Possession by Team 1"</span>, <span class="at">x =</span> <span class="st">"Possession (%)"</span>, <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Adam_Syed_Final_Project_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This density plot shows the distribution of ball possession percentages for Team 1, differentiated by whether Team 1 won the game or not. Both distributions peak at around 50% possession. This suggests that possession was evenly split for the most part. This plot indicates that possession is not a great predictor for whether Team 1 will win a match or not.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(worldcup_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">passes completed team1</span><span class="st">`</span>, <span class="at">fill =</span> first_team_wins)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Passes Completed by Team 1"</span>, <span class="at">x =</span> <span class="st">"Passes Completed"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Adam_Syed_Final_Project_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This histogram shows the distribution of passes completed by Team 1 in all matches. There is no real correlation to be seen in this plot. I thought that I would see a strong correlation between a higher number of passes completed and wins, however this is not the case.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(worldcup_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">yellow cards team1</span><span class="st">`</span>, <span class="at">fill =</span> first_team_wins)) <span class="sc">+</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Yellow Cards by Team 1"</span>, <span class="at">x =</span> <span class="st">"Yellow Cards"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Adam_Syed_Final_Project_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This histogram shows the distribution of yellow cards by Team 1 in all matches. When Team 1 gets 0 yellow cards they win more often than they don’t, this indicates a correlation between a lower number of yellow cards and winning. As the amount of yellow cards increases, the amount of wins also starts to decrease and the amount of non-wins starts to increase. This also indicates a correlation.</p>
+</section>
+<section id="modeling" class="level2">
+<h2 class="anchored" data-anchor-id="modeling">Modeling</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pca_lr_model <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>recipe_model_A <span class="ot">&lt;-</span> <span class="fu">recipe</span>(first_team_wins <span class="sc">~</span> ., <span class="at">data =</span> worldcup_data) <span class="sc">|&gt;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_pca</span>(<span class="fu">all_numeric_predictors</span>(), </span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">num_comp =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>workflow_pca_lr <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(pca_lr_model) <span class="sc">|&gt;</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(recipe_model_A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code creates the workflow for the logistic regression model on PCA. This satisfies the add on, “Perform Principal Component Analysis”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>lasso_lr_model <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>(<span class="at">penalty =</span> <span class="fl">0.1</span>, <span class="at">mixture =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glmnet"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>recipe_model_B <span class="ot">&lt;-</span> <span class="fu">recipe</span>(first_team_wins <span class="sc">~</span> ., <span class="at">data =</span> worldcup_data) <span class="sc">|&gt;</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>workflow_lasso_lr <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lasso_lr_model) <span class="sc">|&gt;</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(recipe_model_B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code creates the workflow for the logistic regression model with lasso penalty.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>knn_model <span class="ot">&lt;-</span> <span class="fu">nearest_neighbor</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"kknn"</span>, </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">neighbors =</span> <span class="dv">10</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>recipe_model_C <span class="ot">&lt;-</span> <span class="fu">recipe</span>(first_team_wins <span class="sc">~</span> ., <span class="at">data =</span> worldcup_data) <span class="sc">|&gt;</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>workflow_knn <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(knn_model) <span class="sc">|&gt;</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(recipe_model_C)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code creates the workflow for the k nearest neighbor model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ranger)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>rf_model <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"ranger"</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>recipe_model_D <span class="ot">&lt;-</span> <span class="fu">recipe</span>(first_team_wins <span class="sc">~</span> ., <span class="at">data =</span> worldcup_data) <span class="sc">|&gt;</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>workflow_rf <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(rf_model) <span class="sc">|&gt;</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(recipe_model_D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code creates the workflow for the random forest model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>lr_model <span class="ot">&lt;-</span> <span class="fu">logistic_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"glm"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"classification"</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>recipe_model_E <span class="ot">&lt;-</span> <span class="fu">recipe</span>(first_team_wins <span class="sc">~</span> ., <span class="at">data =</span> worldcup_data) <span class="sc">|&gt;</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal_predictors</span>())</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>workflow_lr <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">|&gt;</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(lr_model) <span class="sc">|&gt;</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(recipe_model_E)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code creates the workflow for the logistic regression model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>first_split <span class="ot">&lt;-</span> worldcup_data <span class="sc">|&gt;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">initial_split</span>(<span class="at">prop =</span> <span class="fl">0.7</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>first_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;Training/Testing/Total&gt;
+&lt;44/20/64&gt;</code></pre>
+</div>
+</div>
+<p>This code splits the data and puts 70% of the data in the training set and 30% of the data in the testing set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>split1_train <span class="ot">&lt;-</span> first_split <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">training</span>()</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>split1_test <span class="ot">&lt;-</span> first_split <span class="sc">|&gt;</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">testing</span>()</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>split1_train <span class="sc">|&gt;</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+      n
+  &lt;int&gt;
+1    44</code></pre>
+</div>
+</div>
+<p>This code stores the train and test data. It also counts the number of rows in the training set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fit_pca_lr <span class="ot">&lt;-</span> <span class="fu">fit</span>(workflow_pca_lr, <span class="at">data =</span> split1_train)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>fit_lasso_lr <span class="ot">&lt;-</span> <span class="fu">fit</span>(workflow_lasso_lr, <span class="at">data =</span> split1_train)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>fit_knn <span class="ot">&lt;-</span> <span class="fu">fit</span>(workflow_knn, <span class="at">data =</span> split1_train)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>fit_rf <span class="ot">&lt;-</span> <span class="fu">fit</span>(workflow_rf, <span class="at">data =</span> split1_train)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>fit_lr <span class="ot">&lt;-</span> <span class="fu">fit</span>(workflow_lr, <span class="at">data =</span> split1_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code fits all five models.</p>
+</section>
+<section id="model-selection" class="level2">
+<h2 class="anchored" data-anchor-id="model-selection">Model Selection</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>vfold_set <span class="ot">&lt;-</span> <span class="fu">vfold_cv</span>(split1_train,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">v =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code creates a 5-fold cross-validation set from the training data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>workflows_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">workflow_names =</span> <span class="fu">c</span>(<span class="st">"Workflow_pca_lr"</span>, <span class="st">"Workflow_lasso_lr"</span>, <span class="st">"Workflow_knn"</span>, <span class="st">"Workflow_rf"</span>, <span class="st">"Workflow_lr"</span>),</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">workflow_objects =</span> <span class="fu">list</span>(workflow_pca_lr, workflow_lasso_lr, workflow_knn, workflow_rf, workflow_lr)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>workflows_tbl <span class="ot">&lt;-</span>  workflows_tbl <span class="sc">|&gt;</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fits =</span> <span class="fu">list</span>(<span class="fu">fit</span>(workflow_objects, </span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>                         split1_test)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code creates the workflow_tbl and workflow_objects with all five workflows. It also fits each model on the test data to evaluate initial performance. This satisfies the add on, “Make use of a list column during your analysis”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(yardstick)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>auc_metric_set <span class="ot">&lt;-</span> <span class="fu">metric_set</span>(roc_auc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code sets up the roc_auc metric set which will be used to compare model performance.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>workflows_vfold <span class="ot">&lt;-</span> workflows_tbl <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fits =</span> <span class="fu">list</span>(<span class="fu">fit_resamples</span>(workflow_objects,</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>                                         vfold_set,</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">metrics =</span> auc_metric_set))) <span class="sc">|&gt;</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">metrics =</span> <span class="fu">list</span>(<span class="fu">collect_metrics</span>(fits)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>→ A | warning: prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>There were issues with some computations   A: x1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>There were issues with some computations   A: x5</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>workflows_vfold <span class="sc">|&gt;</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(workflow_names,</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>           metrics)) <span class="sc">|&gt;</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(metrics) <span class="sc">|&gt;</span></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(workflow_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 7
+  workflow_names    .metric .estimator  mean     n std_err .config             
+  &lt;chr&gt;             &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 Workflow_knn      roc_auc binary     0.690     5  0.102  Preprocessor1_Model1
+2 Workflow_lasso_lr roc_auc binary     0.874     5  0.0674 Preprocessor1_Model1
+3 Workflow_lr       roc_auc binary     0.464     5  0.122  Preprocessor1_Model1
+4 Workflow_pca_lr   roc_auc binary     0.702     5  0.0899 Preprocessor1_Model1
+5 Workflow_rf       roc_auc binary     0.821     5  0.0645 Preprocessor1_Model1</code></pre>
+</div>
+</div>
+<p>This code compares the performance of each of the five models using the roc_auc metric.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>workflows_vfold <span class="sc">|&gt;</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(workflow_names,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>           metrics)) <span class="sc">|&gt;</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(metrics) <span class="sc">|&gt;</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mean)) <span class="sc">|&gt;</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 7
+  workflow_names    .metric .estimator  mean     n std_err .config             
+  &lt;chr&gt;             &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 Workflow_lasso_lr roc_auc binary     0.874     5  0.0674 Preprocessor1_Model1</code></pre>
+</div>
+</div>
+<p>The lasso_lr model is the best performing model according to the roc_auc metric. It has a mean roc_auc of 0.8744</p>
+</section>
+<section id="model-assessment-and-interpretationuncertainty-quantification" class="level2">
+<h2 class="anchored" data-anchor-id="model-assessment-and-interpretationuncertainty-quantification">Model Assessment and Interpretation/Uncertainty Quantification</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>workflows_vfold <span class="sc">|&gt;</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(workflow_names,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>           metrics)) <span class="sc">|&gt;</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(metrics) <span class="sc">|&gt;</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(.metric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 7
+  workflow_names    .metric .estimator  mean     n std_err .config             
+  &lt;chr&gt;             &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+1 Workflow_pca_lr   roc_auc binary     0.702     5  0.0899 Preprocessor1_Model1
+2 Workflow_lasso_lr roc_auc binary     0.874     5  0.0674 Preprocessor1_Model1
+3 Workflow_knn      roc_auc binary     0.690     5  0.102  Preprocessor1_Model1
+4 Workflow_rf       roc_auc binary     0.821     5  0.0645 Preprocessor1_Model1
+5 Workflow_lr       roc_auc binary     0.464     5  0.122  Preprocessor1_Model1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>workflows_vfold <span class="sc">|&gt;</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(workflow_names,</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>           metrics)) <span class="sc">|&gt;</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(metrics) <span class="sc">|&gt;</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> workflow_names,</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> workflow_names,</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> mean)) <span class="sc">+</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.metric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Adam_Syed_Final_Project_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This plot shows the performance of all five models and confirms that lasso_lr is out best performing model based on the roc_auc metric.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>workflows_tbl <span class="ot">&lt;-</span>  workflows_tbl <span class="sc">|&gt;</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fits =</span> <span class="fu">list</span>(<span class="fu">fit</span>(workflow_objects, </span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>                         split1_test)))</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>workflows_tbl_predictions <span class="ot">&lt;-</span> workflows_tbl <span class="sc">|&gt;</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_class =</span> <span class="fu">list</span>(<span class="fu">predict</span>(fits,</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>                                   split1_test,</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">type =</span> <span class="st">"class"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_prob =</span> <span class="fu">list</span>(<span class="fu">predict</span>(fits,</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>                                  split1_test,</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">type =</span> <span class="st">"prob"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `pred_class = list(predict(fits, split1_test, type = "class"))`.
+ℹ In row 5.
+Caused by warning in `predict.lm()`:
+! prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `pred_prob = list(predict(fits, split1_test, type = "prob"))`.
+ℹ In row 5.
+Caused by warning in `predict.lm()`:
+! prediction from rank-deficient fit; attr(*, "non-estim") has doubtful cases</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>workflows_tbl_predictions <span class="ot">&lt;-</span> workflows_tbl_predictions <span class="sc">|&gt;</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predictions =</span> <span class="fu">list</span>(<span class="fu">bind_cols</span>(pred_class, pred_prob))) <span class="sc">|&gt;</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(pred_class, pred_prob))</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>predictions_tbl  <span class="ot">&lt;-</span> workflows_tbl_predictions <span class="sc">|&gt;</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(workflow_names, </span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>         predictions) <span class="sc">|&gt;</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(predictions)) <span class="sc">|&gt;</span></span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="at">first_team_wins =</span> split1_test <span class="sc">|&gt;</span></span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">pull</span>(first_team_wins))</span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>roc_auc_all <span class="ot">&lt;-</span> predictions_tbl <span class="sc">|&gt;</span></span>
+<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(workflow_names) <span class="sc">|&gt;</span></span>
+<span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">roc_auc</span>(<span class="at">truth =</span> first_team_wins,</span>
+<span id="cb62-15"><a href="#cb62-15" aria-hidden="true" tabindex="-1"></a>          .pred_TRUE,</span>
+<span id="cb62-16"><a href="#cb62-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">event_level =</span> <span class="st">"second"</span>)</span>
+<span id="cb62-17"><a href="#cb62-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-18"><a href="#cb62-18" aria-hidden="true" tabindex="-1"></a>roc_auc_all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+  workflow_names    .metric .estimator .estimate
+  &lt;chr&gt;             &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+1 Workflow_knn      roc_auc binary         1    
+2 Workflow_lasso_lr roc_auc binary         0.969
+3 Workflow_lr       roc_auc binary         1    
+4 Workflow_pca_lr   roc_auc binary         0.906
+5 Workflow_rf       roc_auc binary         1    </code></pre>
+</div>
+</div>
+<p>This table shows the predictive performance of all five models on the held-out test set. This partially satisfies the add on “Include more than one form of uncertainty quantification from the bulleted list”. This is the first of two uncertainty quantifications that i used.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>workflows_vfold <span class="sc">|&gt;</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(workflow_names,</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>           metrics)) <span class="sc">|&gt;</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(metrics) <span class="sc">|&gt;</span></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> workflow_names,</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">x =</span> mean)) <span class="sc">+</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> workflow_names), <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.metric) <span class="sc">+</span></span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> roc_auc_all, <span class="fu">aes</span>(<span class="at">x =</span> .estimate, <span class="at">y =</span> workflow_names), </span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="st">"|"</span>, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Adam_Syed_Final_Project_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This plot compares the roc_auc metric for each of the five models and compares them to their performance on the held-out test set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>control_fit <span class="ot">&lt;-</span> <span class="fu">control_resamples</span>(<span class="at">extract =</span> tidy)</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>bootstrap <span class="ot">&lt;-</span> <span class="fu">bootstraps</span>(worldcup_data, </span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">times =</span> <span class="dv">30</span>)</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>bootstrap_fits <span class="ot">&lt;-</span>  workflow_lasso_lr <span class="sc">|&gt;</span></span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit_resamples</span>(bootstrap,</span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">control =</span> control_fit)</span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a>bootstrap_fits <span class="sc">|&gt;</span></span>
+<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(.extracts) <span class="sc">|&gt;</span></span>
+<span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">first</span>() <span class="sc">|&gt;</span></span>
+<span id="cb65-15"><a href="#cb65-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(.extracts) <span class="sc">|&gt;</span></span>
+<span id="cb65-16"><a href="#cb65-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">first</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 68 × 3
+   term                                     estimate penalty
+   &lt;chr&gt;                                       &lt;dbl&gt;   &lt;dbl&gt;
+ 1 (Intercept)                               -0.791      0.1
+ 2 possession team1                          -0.0116     0.1
+ 3 possession team2                           0          0.1
+ 4 possession in contest                      0          0.1
+ 5 total attempts team1                       0          0.1
+ 6 total attempts team2                       0          0.1
+ 7 assists team1                              1.11       0.1
+ 8 assists team2                              0          0.1
+ 9 attempts outside the penalty area  team1   0          0.1
+10 attempts outside the penalty area  team2   0          0.1
+# ℹ 58 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>bootstrap_coefs <span class="ot">&lt;-</span> bootstrap_fits  <span class="sc">|&gt;</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id, .extracts) <span class="sc">|&gt;</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(.extracts) <span class="sc">|&gt;</span> </span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(.extracts)</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>bootstrap_coefs <span class="sc">|&gt;</span></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 2,048
+Columns: 5
+$ id       &lt;chr&gt; "Bootstrap01", "Bootstrap01", "Bootstrap01", "Bootstrap01", "…
+$ term     &lt;chr&gt; "(Intercept)", "possession team1", "possession team2", "posse…
+$ estimate &lt;dbl&gt; -0.79069020, -0.01163007, 0.00000000, 0.00000000, 0.00000000,…
+$ penalty  &lt;dbl&gt; 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0…
+$ .config  &lt;chr&gt; "Preprocessor1_Model1", "Preprocessor1_Model1", "Preprocessor…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>bootstrap_std <span class="ot">&lt;-</span> bootstrap_coefs <span class="sc">|&gt;</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">std.error =</span> <span class="fu">sd</span>(estimate),</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">estimate =</span> <span class="fu">mean</span>(estimate),</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">.by =</span> term)</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>bootstrap_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 69 × 3
+   term                                     std.error estimate
+   &lt;chr&gt;                                        &lt;dbl&gt;    &lt;dbl&gt;
+ 1 (Intercept)                                0.324   -0.285  
+ 2 possession team1                           0.0121  -0.00258
+ 3 possession team2                           0        0      
+ 4 possession in contest                      0.00522 -0.00137
+ 5 total attempts team1                       0.0110   0.00202
+ 6 total attempts team2                       0        0      
+ 7 assists team1                              0.205    0.863  
+ 8 assists team2                              0.219   -0.492  
+ 9 attempts outside the penalty area  team1   0.0183   0.00334
+10 attempts outside the penalty area  team2   0.0130  -0.00295
+# ℹ 59 more rows</code></pre>
+</div>
+</div>
+<p>This code performs bootstrap resampling on the data using the lasso_lr model. This satisfies the add on “Include more than one form of uncertainty quantification from the bulleted list”. This is the second of the two uncertainty quantifications that i used.</p>
+</section>
+<section id="results-communication" class="level2">
+<h2 class="anchored" data-anchor-id="results-communication">Results Communication</h2>
+<p>My best model was the lasso_lr model. An interesting thing about this model is that although it performed the best in the training data it performed worse than all the other models except for the pca_lr model on the testing data.</p>
+<p>As far as direction for future exploration I would recommend a few things. The first being playing around more with the predictors that are included in the models and possibly simplifying them since there are a lot of predictors included in my models. I would also recommend tuning the hyper parameters in the models to get even better results. Finally, I would recommend trying more types of validation methods.</p>
+</section>
+<section id="add-ons" class="level2">
+<h2 class="anchored" data-anchor-id="add-ons">Add ons</h2>
+<ol type="1">
+<li>Clean data using a regular expression.</li>
+<li>Perform Principal Component Analysis</li>
+<li>Include more than one form of uncertainty quantification from the bulleted list</li>
+<li>Make use of a list column during your analysis</li>
+<li>Make a github repository for your project (share the link with me)</li>
+</ol>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

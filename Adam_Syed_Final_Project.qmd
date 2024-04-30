@@ -1,0 +1,453 @@
+---
+title: "Adam_Syed_Final_Project"
+format: html
+editor: visual
+author: Adam Syed
+---
+
+## Github Repository
+
+<https://github.com/adamsyed33/AdamSyed_FinalProject>
+
+This is the link to my github repository. This is one of my five add ons.
+
+## Goal
+
+The goal of this project is to create a model to predict whether 'team1' will win each game at the 2022 world cup or not.
+
+## Data Import
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+
+worldcup_data <- read_csv("/Users/adamyeeter/STAT 5125/Final Project/Adam_Syed_Final_Project/Fifa_world_cup_matches.csv")
+```
+
+## Data Cleaning and Tidying
+
+```{r}
+sum(is.na(worldcup_data))
+```
+
+Checked for NA's, none found.
+
+```{r}
+worldcup_data <- worldcup_data |>
+  mutate(across(contains("possession"), ~ as.numeric(gsub("%", "", .x)) / 100))
+```
+
+Converted possession to a numeric column, removed percent sign, and divided by 100. This satisfies the add on, "Clean data using a regular expression".
+
+```{r}
+worldcup_data <- worldcup_data |>
+  mutate(first_team_wins = case_when(
+    `number of goals team1` > `number of goals team2` ~ "TRUE",
+    TRUE ~ "FALSE"
+  )) |>
+  mutate(first_team_wins = factor(first_team_wins))
+```
+
+Set up target variable as 'first_team_wins'. This target variable returns "TRUE" when team1 wins and "FALSE" when team1 does not win.
+
+```{r}
+worldcup_data |>
+  glimpse()
+```
+
+Viewing column names to decide which ones I want to remove/keep.
+
+```{r}
+worldcup_data <- worldcup_data |>
+  select(
+    -`number of goals team1`,
+    -`number of goals team2`,
+    -`goal inside the penalty area team1`,
+    -`goal inside the penalty area team2`,
+    -`goal outside the penalty area team1`,
+    -`goal outside the penalty area team2`,
+    -`conceded team1`,
+    -`conceded team2`,
+    -`on target attempts team1`,
+    -`on target attempts team2`,
+    -`attempts inside the penalty area team1`,
+    -`attempts inside the penalty area  team2`,
+    -`off target attempts team1`,
+    -`off target attempts team2`,
+    -team1,
+    -team2,
+    -date,
+    -hour,
+    -category
+  )
+```
+
+Removed number of goals for both teams because that would make the problem too easy. I also removed goals inside and outside the penalty area for both teams for the same reason. I removed conceded for both teams for the same reason as well. I removed all attempts columns except for total attempts because all of those columns correlate highly with total attempts. I removed team1, team2, date, hour, and category because they do not have predicitve power for my target variable.
+
+```{r}
+worldcup_data |>
+  glimpse()
+```
+
+Viewing all columns included in modeling.
+
+## Data Exploration
+
+```{r}
+ggplot(worldcup_data, aes(x = `total attempts team1`, fill = first_team_wins)) +
+  geom_histogram(bins = 10) +
+  labs(title = "Distribution of Total Attempts by Team 1", x = "Total Attempts", y = "Count") +
+  theme_minimal()
+```
+
+This histogram shows how often the first team won or did not win when having a certain number of attempts. There is a large amount of data for the 0 to 15 attempt range and not much past that. This indicates that it is less common to have a lot of attempts in a match. As you can see from the histogram, a large number of attempts does not always correlate with winning the match. Also, a low number or attempts does not always correlate with not winning the match. Total attempts is not a great predictor because I do not see a strong correlation between a higher number of attempts and more wins or non-wins.
+
+```{r}
+ggplot(worldcup_data, aes(x = first_team_wins)) +
+  geom_bar(fill = c("red", "blue")) +
+  labs(title = "Number of Wins and Non-wins by Team 1",
+       x = "Team 1 Wins", y = "Count") +
+  theme_minimal()
+```
+
+This bar plot shows the number of games Team 1 won and the number they did not win. Based on the plot, Team 1 lost 35 times and won 29 times.
+
+```{r}
+ggplot(worldcup_data, aes(x = `possession team1`, fill = first_team_wins)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Density of Ball Possession by Team 1", x = "Possession (%)", y = "Density") +
+  theme_minimal()
+```
+
+This density plot shows the distribution of ball possession percentages for Team 1, differentiated by whether Team 1 won the game or not. Both distributions peak at around 50% possession. This suggests that possession was evenly split for the most part. This plot indicates that possession is not a great predictor for whether Team 1 will win a match or not.
+
+```{r}
+ggplot(worldcup_data, aes(x = `passes completed team1`, fill = first_team_wins)) +
+  geom_histogram(bins = 10) +
+  labs(title = "Distribution of Passes Completed by Team 1", x = "Passes Completed", y = "Count") +
+  theme_minimal()
+```
+
+This histogram shows the distribution of passes completed by Team 1 in all matches. There is no real correlation to be seen in this plot. I thought that I would see a strong correlation between a higher number of passes completed and wins, however this is not the case.
+
+```{r}
+ggplot(worldcup_data, aes(x = `yellow cards team1`, fill = first_team_wins)) +
+  geom_histogram(bins = 10) +
+  labs(title = "Distribution of Yellow Cards by Team 1", x = "Yellow Cards", y = "Count") +
+  theme_minimal()
+```
+
+This histogram shows the distribution of yellow cards by Team 1 in all matches. When Team 1 gets 0 yellow cards they win more often than they don't, this indicates a correlation between a lower number of yellow cards and winning. As the amount of yellow cards increases, the amount of wins also starts to decrease and the amount of non-wins starts to increase. This also indicates a correlation.
+
+## Modeling
+
+```{r}
+pca_lr_model <- logistic_reg() |>
+  set_engine("glm") |>
+  set_mode("classification")
+
+recipe_model_A <- recipe(first_team_wins ~ ., data = worldcup_data) |>
+  step_zv(all_predictors()) |>
+  step_normalize(all_numeric_predictors()) |>
+  step_pca(all_numeric_predictors(), 
+          num_comp = 3) |>
+  step_dummy(all_nominal_predictors())
+
+workflow_pca_lr <- workflow() |>
+  add_model(pca_lr_model) |>
+  add_recipe(recipe_model_A)
+```
+
+This code creates the workflow for the logistic regression model on PCA. This satisfies the add on, "Perform Principal Component Analysis".
+
+```{r}
+lasso_lr_model <- logistic_reg(penalty = 0.1, mixture = 1) |>
+  set_engine("glmnet") |>
+  set_mode("classification")
+
+recipe_model_B <- recipe(first_team_wins ~ ., data = worldcup_data) |>
+  step_zv(all_predictors()) |>
+  step_normalize(all_numeric_predictors()) |>
+  step_dummy(all_nominal_predictors())
+
+workflow_lasso_lr <- workflow() |>
+  add_model(lasso_lr_model) |>
+  add_recipe(recipe_model_B)
+```
+
+This code creates the workflow for the logistic regression model with lasso penalty.
+
+```{r}
+knn_model <- nearest_neighbor() |> 
+  set_mode("classification") |>
+  set_engine("kknn", 
+             neighbors = 10)
+
+recipe_model_C <- recipe(first_team_wins ~ ., data = worldcup_data) |>
+  step_zv(all_predictors()) |>
+  step_normalize(all_numeric_predictors()) |>
+  step_dummy(all_nominal_predictors())
+
+workflow_knn <- workflow() |>
+  add_model(knn_model) |>
+  add_recipe(recipe_model_C)
+```
+
+This code creates the workflow for the k nearest neighbor model.
+
+```{r}
+library(ranger)
+rf_model <- rand_forest() |> 
+  set_mode("classification") |>
+  set_engine("ranger")
+
+recipe_model_D <- recipe(first_team_wins ~ ., data = worldcup_data) |>
+  step_zv(all_predictors()) |>
+  step_normalize(all_numeric_predictors()) |>
+  step_dummy(all_nominal_predictors())
+
+workflow_rf <- workflow() |>
+  add_model(rf_model) |>
+  add_recipe(recipe_model_D)
+```
+
+This code creates the workflow for the random forest model.
+
+```{r}
+lr_model <- logistic_reg() |>
+  set_engine("glm") |>
+  set_mode("classification")
+
+recipe_model_E <- recipe(first_team_wins ~ ., data = worldcup_data) |>
+  step_zv(all_predictors()) |>
+  step_normalize(all_numeric_predictors()) |>
+  step_dummy(all_nominal_predictors())
+
+workflow_lr <- workflow() |>
+  add_model(lr_model) |>
+  add_recipe(recipe_model_E)
+```
+
+This code creates the workflow for the logistic regression model.
+
+```{r}
+set.seed(1)
+
+first_split <- worldcup_data |>
+  initial_split(prop = 0.7)
+
+first_split
+```
+
+This code splits the data and puts 70% of the data in the training set and 30% of the data in the testing set.
+
+```{r}
+split1_train <- first_split |>
+  training()
+
+split1_test <- first_split |>
+  testing()
+
+split1_train |>
+  count()
+```
+
+This code stores the train and test data. It also counts the number of rows in the training set.
+
+```{r}
+fit_pca_lr <- fit(workflow_pca_lr, data = split1_train)
+
+fit_lasso_lr <- fit(workflow_lasso_lr, data = split1_train)
+
+fit_knn <- fit(workflow_knn, data = split1_train)
+
+fit_rf <- fit(workflow_rf, data = split1_train)
+
+fit_lr <- fit(workflow_lr, data = split1_train)
+```
+
+This code fits all five models.
+
+## Model Selection
+
+```{r}
+set.seed(1)
+vfold_set <- vfold_cv(split1_train,
+                      v = 5)
+```
+
+This code creates a 5-fold cross-validation set from the training data.
+
+```{r}
+workflows_tbl <- tibble(
+  workflow_names = c("Workflow_pca_lr", "Workflow_lasso_lr", "Workflow_knn", "Workflow_rf", "Workflow_lr"),
+  workflow_objects = list(workflow_pca_lr, workflow_lasso_lr, workflow_knn, workflow_rf, workflow_lr)
+)
+
+workflows_tbl <-  workflows_tbl |>
+  rowwise() |>
+  mutate(fits = list(fit(workflow_objects, 
+                         split1_test)))
+```
+
+This code creates the workflow_tbl and workflow_objects with all five workflows. It also fits each model on the test data to evaluate initial performance. This satisfies the add on, "Make use of a list column during your analysis".
+
+```{r}
+library(yardstick)
+set.seed(1)
+auc_metric_set <- metric_set(roc_auc)
+```
+
+This code sets up the roc_auc metric set which will be used to compare model performance.
+
+```{r}
+workflows_vfold <- workflows_tbl |>
+  mutate(fits = list(fit_resamples(workflow_objects,
+                                         vfold_set,
+                                         metrics = auc_metric_set))) |>
+  mutate(metrics = list(collect_metrics(fits)))
+
+workflows_vfold |>
+  select(c(workflow_names,
+           metrics)) |>
+  unnest(metrics) |>
+  arrange(workflow_names)
+```
+
+This code compares the performance of each of the five models using the roc_auc metric.
+
+```{r}
+workflows_vfold |>
+  select(c(workflow_names,
+           metrics)) |>
+  unnest(metrics) |>
+  arrange(desc(mean)) |>
+  slice(1)
+```
+
+The lasso_lr model is the best performing model according to the roc_auc metric. It has a mean roc_auc of 0.8744
+
+## Model Assessment and Interpretation/Uncertainty Quantification
+
+```{r}
+workflows_vfold |>
+  select(c(workflow_names,
+           metrics)) |>
+  unnest(metrics) |>
+  arrange(.metric)
+
+workflows_vfold |>
+  select(c(workflow_names,
+           metrics)) |>
+  unnest(metrics) |>
+  ggplot(aes(y = workflow_names,
+             fill = workflow_names,
+             x = mean)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~.metric)
+```
+
+This plot shows the performance of all five models and confirms that lasso_lr is out best performing model based on the roc_auc metric.
+
+```{r}
+workflows_tbl <-  workflows_tbl |>
+  rowwise() |>
+  mutate(fits = list(fit(workflow_objects, 
+                         split1_test)))
+
+workflows_tbl_predictions <- workflows_tbl |>
+  mutate(pred_class = list(predict(fits,
+                                   split1_test,
+                                   type = "class"))) |>
+  mutate(pred_prob = list(predict(fits,
+                                  split1_test,
+                                  type = "prob")))
+
+workflows_tbl_predictions <- workflows_tbl_predictions |>
+  mutate(predictions = list(bind_cols(pred_class, pred_prob))) |>
+  select(-c(pred_class, pred_prob))
+
+predictions_tbl  <- workflows_tbl_predictions |>
+  select(workflow_names, 
+         predictions) |>
+  unnest(cols = c(predictions)) |>
+  cbind(first_team_wins = split1_test |>
+          pull(first_team_wins))
+
+roc_auc_all <- predictions_tbl |>
+  group_by(workflow_names) |>
+  roc_auc(truth = first_team_wins,
+          .pred_TRUE,
+          event_level = "second")
+
+roc_auc_all
+```
+
+This table shows the predictive performance of all five models on the held-out test set. This partially satisfies the add on "Include more than one form of uncertainty quantification from the bulleted list". This is the first of two uncertainty quantifications that i used.
+
+```{r}
+workflows_vfold |>
+  select(c(workflow_names,
+           metrics)) |>
+  unnest(metrics) |>
+  ggplot(aes(y = workflow_names,
+             x = mean)) +
+  geom_col(aes(fill = workflow_names), position = "dodge") +
+  facet_wrap(~.metric) +
+  geom_point(data = roc_auc_all, aes(x = .estimate, y = workflow_names), 
+             shape = "|", size = 5, color = "black")
+```
+
+This plot compares the roc_auc metric for each of the five models and compares them to their performance on the held-out test set.
+
+```{r}
+set.seed(1)
+
+control_fit <- control_resamples(extract = tidy)
+
+bootstrap <- bootstraps(worldcup_data, 
+                             times = 30)
+
+bootstrap_fits <-  workflow_lasso_lr |>
+  fit_resamples(bootstrap,
+                control = control_fit)
+
+bootstrap_fits |>
+  pull(.extracts) |>
+  first() |>
+  pull(.extracts) |>
+  first()
+
+bootstrap_coefs <- bootstrap_fits  |>
+  select(id, .extracts) |>
+  unnest(.extracts) |> 
+  unnest(.extracts)
+
+bootstrap_coefs |>
+  glimpse()
+```
+
+```{r}
+bootstrap_std <- bootstrap_coefs |>
+  summarize(std.error = sd(estimate),
+            estimate = mean(estimate),
+            .by = term)
+
+bootstrap_std
+```
+
+This code performs bootstrap resampling on the data using the lasso_lr model. This satisfies the add on "Include more than one form of uncertainty quantification from the bulleted list". This is the second of the two uncertainty quantifications that i used.
+
+## Results Communication
+
+My best model was the lasso_lr model. An interesting thing about this model is that although it performed the best in the training data it performed worse than all the other models except for the pca_lr model on the testing data.
+
+As far as direction for future exploration I would recommend a few things. The first being playing around more with the predictors that are included in the models and possibly simplifying them since there are a lot of predictors included in my models. I would also recommend tuning the hyper parameters in the models to get even better results. Finally, I would recommend trying more types of validation methods.
+
+## Add ons
+
+1.  Clean data using a regular expression.
+2.  Perform Principal Component Analysis
+3.  Include more than one form of uncertainty quantification from the bulleted list
+4.  Make use of a list column during your analysis
+5.  Make a github repository for your project (share the link with me)
